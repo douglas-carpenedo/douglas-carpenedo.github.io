@@ -152,7 +152,7 @@
             <div class="classtrib-results-info">
                 <div>
                     <span id="resultsCount" aria-live="polite">Exibindo 0 registros</span><br />
-                    <span id="infoData">Dados da tabela cClassTrib publicada em <strong>18/06/2025</strong> no <a href="https://www.nfe.fazenda.gov.br/" target="_blank">Portal Nacional NFE</a>.</span>
+                    <span id="infoData">Dados da tabela cClassTrib publicada em <strong>18/06/2025</strong> no <a id="urlNfe" href="https://www.nfe.fazenda.gov.br/" target="_blank">Portal Nacional NFE</a>.</span>
                 </div>
                 <div class="legend-container">
                     <div class="legend-items">
@@ -173,13 +173,13 @@
 
                 <div class="classtrib-export-section">
                     <span>Exportar:</span>
-                    <button class="classtrib-export-btn" onclick="exportToCSV()" aria-label="Exportar para CSV">
+                    <button id="btnExportCsv" class="classtrib-export-btn" onclick="exportToCSV()" aria-label="Exportar para CSV">
                         📄 CSV
                     </button>
-                    <button class="classtrib-export-btn excel" onclick="exportToExcel()" aria-label="Exportar para Excel">
+                    <button id="btnExportExcel" class="classtrib-export-btn excel" onclick="exportToExcel()" aria-label="Exportar para Excel">
                         📊 Excel
                     </button>
-                    <button class="classtrib-export-btn json" onclick="exportToJSON()" aria-label="Exportar para JSON">
+                    <button id="btnExportJson" class="classtrib-export-btn json" onclick="exportToJSON()" aria-label="Exportar para JSON">
                         📋 JSON
                     </button>
                 </div>
@@ -191,12 +191,12 @@
                         <thead id="dataTableHeaders">
                             <tr>
                                 <th rowspan="2" scope="col" class="expand-column"></th>
-                                <th rowspan="2" scope="col" class="sortable" data-sort-by="codCst" data-sort-type="string" aria-label="Ordenar por Código CST">CST <span class="sort-icon"></span></th>
-                                <th rowspan="2" scope="col" class="sortable" data-sort-by="cClassTrib" data-sort-type="string" aria-label="Ordenar por Código cClassTrib">cClassTrib <span class="sort-icon"></span></th>
-                                <th rowspan="2" scope="col" class="border-right-strong sortable" data-sort-by="nomeClassTrib" data-sort-type="string" aria-label="Ordenar por Descrição do cClassTrib">Descrição cClassTrib <span class="sort-icon"></span></th>
+                                <th rowspan="2" scope="col" class="sortable sort-cst" data-sort-by="codCst" data-sort-type="string" aria-label="Ordenar por Código CST">CST <span class="sort-icon"></span></th>
+                                <th rowspan="2" scope="col" class="sortable sort-cClassTrib" data-sort-by="cClassTrib" data-sort-type="string" aria-label="Ordenar por Código cClassTrib">cClassTrib <span class="sort-icon"></span></th>
+                                <th rowspan="2" scope="col" class="border-right-strong sortable sort-nomeClassTrib" data-sort-by="nomeClassTrib" data-sort-type="string" aria-label="Ordenar por Descrição do cClassTrib">Descrição cClassTrib <span class="sort-icon"></span></th>
                                 <th colspan="2" scope="col" class="border-right-strong">Indicadores do CST</th>
                                 <th colspan="9" scope="col" class="border-right-strong">Indicadores do cClassTrib</th>
-                                <th rowspan="2" scope="col" class="sortable" data-sort-by="LC_214_25" data-sort-type="string" aria-label="Ordenar por Artigo da LC 214/25">LC<br />214/25 <span class="sort-icon"></span></th>
+                                <th rowspan="2" scope="col" class="sortable sort-lc" data-sort-by="LC_214_25" data-sort-type="string" aria-label="Ordenar por Artigo da LC 214/25">LC<br />214/25 <span id="sort-icon-lc" class="sort-icon"></span></th>
                             </tr>
                             <tr>
                                 <th><span class="tooltip" tooltip-data="Diferimento">gDif</span></th>
