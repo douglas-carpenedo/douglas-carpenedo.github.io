@@ -1,14 +1,17 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-MXPST68S');</script>
-	<!-- End Google Tag Manager -->
-
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MXPST68S');</script>
+    <!-- End Google Tag Manager -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1F4ZKE2V6"></script>
     <script>
@@ -34,10 +37,12 @@
     </script>
 </head>
 <body>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXPST68S"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXPST68S"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="classtrib-container">
         <div class="classtrib-main" role="region">
             <div class="classtrib-header">
@@ -57,7 +62,7 @@
                 <div class="classtrib-filter-row">
                     <div class="classtrib-filter-group">
                         <label for="codCst">Código CST</label>
-                        <select id="codCst" aria-label="Filtrar por CST">
+                        <select id="codCst" aria-label="Filtrar por CST" required>
                             <option value="">Selecione..</option>
                             <option value="000">000 - Tributação integral</option>
                             <option value="010">010 - Tributação com alíquotas uniformes</option>
@@ -79,15 +84,15 @@
                     </div>
                     <div class="classtrib-filter-group">
                         <label for="cClassTrib">Código ClassTrib</label>
-                        <input type="text" id="cClassTrib" placeholder="Ex: 000001" aria-label="Filtrar por Código do cClassTrib">
+                        <input type="text" id="cClassTrib" placeholder="Ex: 000001" aria-label="Filtrar por Código do cClassTrib" required maxlength="6">
                     </div>
                     <div class="classtrib-filter-group" id="divNomeClassTrib">
                         <label for="nomeClassTrib">Nome ClassTrib</label>
-                        <input type="text" id="nomeClassTrib" placeholder="Digite para buscar..." aria-label="Filtrar por Descrição do cClassTrib">
+                        <input type="text" id="nomeClassTrib" placeholder="Digite para buscar..." aria-label="Filtrar por Descrição do cClassTrib" required>
                     </div>
                     <div class="classtrib-filter-group">
                         <label for="numArtigo">Nro. Artigo (LC 214/25)</label>
-                        <input type="text" id="numArtigo" placeholder="Ex: 5, 20" aria-label="Filtrar por Número do Artigo da LC 214/25">
+                        <input type="text" id="numArtigo" placeholder="Ex: 5, 20" aria-label="Filtrar por Número do Artigo da LC 214/25" required maxlength="3">
                     </div>
                     <button class="classtrib-clear-filters" onclick="clearAllFilters()" aria-label="Limpar Filtros">Limpar Filtros</button>
                 </div>
@@ -95,6 +100,16 @@
                 <div class="classtrib-checkbox-filters">
                     <div class="filter-section">
                         <h3>Indicadores do CST</h3>
+                        <div class="classtrib-filter-group" id="divTipoTrib">
+                            <label for="tipoTrib">Tipo de Tributação</label>
+                            <select id="tipoTrib" aria-label="Filtrar por Tipo de Tributação" required>
+                                <option value="">Todos</option>
+                                <option value="1">IBSCBS (ind_gIBSCBS = 1)</option>
+                                <option value="2">Monofásica (ind_gIBSCBSMono = 1)</option>
+                                <option value="3">Transf. Crédito (ind_gTransfCred = 1)</option>
+                                <option value="9">Sem Tributação (todos indicadores = 0)</option>
+                            </select>
+                        </div>
                         <div class="classtrib-checkbox-group">
                             <input type="checkbox" id="ind_gDif">
                             <label for="ind_gDif">Diferimento (ind_gDif = 1)</label>
@@ -147,6 +162,69 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="filter-section">
+                    <div id="dfeFilterToggleHeader" class="dfe-filter-toggle-header">
+                        <h3>DF-e Permitidos<span class="dfe-filter-toggle-button arrow-down"></span></h3>
+                    </div>
+                    <div id="dfeFilterToggleContent" class="dfe-filter-toggle-content">
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indNFe">
+                                <label for="indNFe">NF-e</label>
+                            </span>
+                        </div>
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indNFCe">
+                                <label for="indNFCe">NFC-e</label>
+                            </span>
+                        </div>
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indCTe">
+                                <label for="indCTe">CT-e</label>
+                            </span>
+                        </div>
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indCTeOS">
+                                <label for="indCTeOS">CT-e OS</label>
+                            </span>
+                        </div>
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indBPe">
+                                <label for="indBPe">BP-e</label>
+                            </span>
+                        </div>
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indBPeTM">
+                                <label for="indBPeTM">BP-e TM</label>
+                            </span>
+                        </div>
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indNF3e">
+                                <label for="indNF3e">NF3-e</label>
+                            </span>
+                        </div>
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indNFCom">
+                                <label for="indNFCom">NFCom</label>
+                            </span>
+                        </div>
+                        <div class="classtrib-checkbox-group">
+                            <span class="dfe-item checkbox-dfe">
+                                <input type="checkbox" id="indNFSe">
+                                <label for="indNFSe">NFS-e</label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="classtrib-results-info">
@@ -194,11 +272,12 @@
                                 <th rowspan="2" scope="col" class="sortable gtm-sort-cst" data-sort-by="codCst" data-sort-type="string" aria-label="Ordenar por Código CST">CST <span class="sort-icon gtm-sort-cst"></span></th>
                                 <th rowspan="2" scope="col" class="sortable gtm-sort-cClassTrib" data-sort-by="cClassTrib" data-sort-type="string" aria-label="Ordenar por Código cClassTrib">cClassTrib <span class="sort-icon gtm-sort-cClassTrib"></span></th>
                                 <th rowspan="2" scope="col" class="border-right-strong sortable gtm-sort-nomeClassTrib" data-sort-by="nomeClassTrib" data-sort-type="string" aria-label="Ordenar por Descrição do cClassTrib">Descrição cClassTrib <span class="sort-icon gtm-sort-nomeClassTrib"></span></th>
-                                <th colspan="2" scope="col" class="border-right-strong">Indicadores do CST</th>
+                                <th colspan="3" scope="col" class="border-right-strong">Indicadores do CST</th>
                                 <th colspan="9" scope="col" class="border-right-strong">Indicadores do cClassTrib</th>
                                 <th rowspan="2" scope="col" class="sortable gtm-sort-lc" data-sort-by="LC_214_25" data-sort-type="string" aria-label="Ordenar por Artigo da LC 214/25">LC<br />214/25 <span id="sort-icon-lc" class="sort-icon gtm-sort-lc"></span></th>
                             </tr>
                             <tr>
+                                <th><span class="tooltip" tooltip-data="Tipo de Tributação">Trib.</span></th>
                                 <th><span class="tooltip" tooltip-data="Diferimento">gDif</span></th>
                                 <th class="border-right-strong"><span class="tooltip" tooltip-data="Redução de Alíquota">gRed</span></th>
                                 <th><span class="tooltip" tooltip-data="Redução da Alíquota do IBS">Red.<br />IBS</span></th>
